@@ -1,0 +1,26 @@
+<div class = "post_div">
+
+<h3> 
+<%= @post.restaurant.name %> </h3>  
+<img src=<%=@post.restaurant.imageurl%> alt=<%="@restaurant.imageurl"%> height="100" >
+<h4> <%= @post.title %> </h4>  
+
+<h5> <%= @post.message %> </h5> 
+
+<div class = "message_div">
+
+<%@post.comments.each do |comment|%>
+<img class= "message-image" src=<%=comment.user.imageurl%> alt=<%=@user.imageurl%> >
+    <%=comment.user.name + ": "%>
+    
+   <%=comment.message%>  <br> 
+   <%if comment.user == session[:user_id] %>
+   
+   <%= button_to "edit", edit_post_comment_path(post,comment), method: :get,:class => "postsbtn1" %>
+
+  <%= button_to "delete", post_comment_path(post,comment), method: :delete, data: { confirm: 'are u sure lol' }, :class => "postsbtn1" %> 
+ 
+   <%end%> 
+    <%end%> <br>
+
+</div>

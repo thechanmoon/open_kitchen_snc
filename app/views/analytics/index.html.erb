@@ -1,0 +1,24 @@
+<h1>Analytics  </h1>
+
+Total Posts: <%= pluralize(Post.total_count, 'post')%> <br>
+Total Comments: <%= pluralize(Comment.total_count, 'comment')%> <br>
+Total Posts: <%= pluralize(Post.total_count, 'post')%> <br>
+Total Restaurants: <%= pluralize(Restaurant.total_count, 'restaurant')%> <br>
+Restaurants with Posts: <%= pluralize(Restaurant.restaurants_with_posts, 'restaurant') %>
+<br>
+<ul>
+<% User.user_all.each do  |user| %>
+
+    <li>Username: <%=user.name%> </li>
+
+    <li><%=user.name_and_comments()%>  </li>
+    <li>Characters used:  <%= pluralize( user.character_counts, 'character')%> </li>
+    <li>Characters used average:  <%= pluralize( user.character_count_avg, 'character')%> </li>  
+    <li>Likes:  <%= pluralize( user.likes_counts, 'like')%> </li>   
+    <li><%=user.restaurant_owner()%></li>
+    <li><%=user.account_created%> </li>
+    <li><%=user.account_updated%> </li>
+    
+    <br><br>
+<%end%> 
+<ul>

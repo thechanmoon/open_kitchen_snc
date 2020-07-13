@@ -1,0 +1,46 @@
+
+
+<h1>Feed</h1>
+
+<%@posts.each do |post|%>
+<div class = "post_div">
+<div class = "text_div">
+<h3 class = "blue-text"> 
+<%= link_to post.restaurant.name, restaurant_path(post.restaurant.id) %> </h3>  
+<img src=<%=post.restaurant.imageurl%> alt=<%="@restaurant.imageurl"%> height="100" >
+<h4> <%= post.title %> </h4>  
+
+<h5> <%= post.message %> </h5> 
+
+<% if session[:user_id] && @user.likes?(post) %>
+
+<%= link_to "Unlike",post_like_path(post), method: :delete %>
+<% else %>
+<%= link_to "Likes",  post_like_path(post), method: :post %>
+<% end %>
+<%= post.likes.count%>
+
+<div class = "message_div">
+
+<%post.comments.each do |comment|%>
+<img class= "message-image" src=<%=comment.user.imageurl%> alt=<%=@user.imageurl%> >
+    <%=link_to comment.user.name, comment.user %>
+
+   <%=comment.message%>  <br> 
+ 
+   <%if comment.user.id == session[:user_id] %>
+  
+   
+   <%= button_to "edit", edit_post_comment_path(post,comment), method: :get,:class => "postsbtn1" %>
+
+  <%= button_to "delete", post_comment_path(post,comment), method: :delete, data: { confirm: 'are u sure lol' }, :class => "postsbtn1" %> 
+ 
+   <%end%> 
+    <%end%> <br>
+
+</div>
+
+<%= button_to "Add a comment", new_post_comment_path(post), method: :get, :class => "postsbtn1"%>
+</div>
+</div>
+<%end%>

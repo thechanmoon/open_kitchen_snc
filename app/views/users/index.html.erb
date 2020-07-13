@@ -1,0 +1,9 @@
+<ul>
+<%@users.each do |user|%>
+<li>    
+<img src=<%=user.imageurl%> alt=<%=user.imageurl%> height="30" width="30">
+<%=link_to user.name,  user%> 
+<br><br><br>
+</li>
+<%end%>
+</ul>

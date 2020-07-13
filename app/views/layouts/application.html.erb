@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OpenKitchen</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class = "background_div">
+
+<%if session[:user_id]%>
+<a href="http://localhost:3000/posts">
+<img class="header-logo center" src="https://dl.airtable.com/.attachmentThumbnails/2638db50408214b30540aac1b0c5eee1/4ce89b4c" alt="HTML5 Icon" >
+</a>
+<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='logout', class = "postsbtn1">
+<% end %>
+<%= link_to "All Restaurants", restaurants_path, :class => "postsbtn1"%>
+<%= link_to "My Profile", user_path(session[:user_id])	, :class => "postsbtn1"%>
+<%= link_to "Feed", posts_path, :class => "postsbtn1"%>
+<%= link_to "Analytics", analytics_path, :class => "postsbtn1"%>
+<%end%>
+
+
+    <% flash.each do |name, msg| -%>
+      <span class="blinking"><%= content_tag :div, msg, class: name %></span>
+    <% end -%>
+
+
+    
+    <%= yield %>
+  </body>
+</html>

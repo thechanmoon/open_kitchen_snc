@@ -1,0 +1,25 @@
+
+<div class = "login-bg">
+<div class = "login-div">
+<img class="login-logo center" src="https://dl.airtable.com/.attachmentThumbnails/2638db50408214b30540aac1b0c5eee1/4ce89b4c" alt="HTML5 Icon" >
+<%= form_for @user, controller: 'users', action: 'create' do |f| %>
+  <%= f.label :email %> <br> 
+  <%= f.email_field :email, required: true %>  <br> <br> 
+
+  <%= f.label :first_name %> <br> 
+  <%= f.text_field :first_name %> <br> <br> 
+  
+  <%= f.label :last_name %> <br> 
+  <%= f.text_field :last_name %>  <br> <br> 
+
+  <%= f.label :password %> <br> 
+  <%= f.password_field :password %>  <br> <br> 
+
+  <%= f.label :password_confirmation %> <br> 
+  <%= f.password_field :password_confirmation %>  <br> 
+
+  <%= f.submit "create" %>
+<% end %>
+
+ </div>
+ </div>

@@ -1,0 +1,17 @@
+
+<div class = "post_div">
+
+
+
+
+<img class= "round-image" src=<%=@user.imageurl%> alt=<%=@user.imageurl%> >
+
+    <div class = "center_div">
+    <h3><%=@user.name%></h3>
+<%#=mail_to @user.email,@user.email%>
+<%#= link_to "edit", edit_user_path(@user), :class => "postsbtn1" %>
+<% if @user.id == session[:user_id]%>
+<%= button_to "edit profile", edit_user_path(@user), method: :get,:class => "postsbtn1" %>
+<%end%>
+    </div>
+</div>

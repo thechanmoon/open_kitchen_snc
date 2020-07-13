@@ -1,0 +1,25 @@
+
+<div class = "post_div">
+<h3><%=@restaurant.name%></h3>
+<%=@restaurant.description%> <br>
+
+<ul>
+ Phonenumber: <a href= "tel:#{@restaurant.website}">
+         <%=@restaurant.phonenumber %>
+      </a> <br>
+
+Email: <%=mail_to @restaurant.email,@restaurant.email%><br>
+
+Website: <%= link_to @restaurant.website %> <br>
+</ul>
+
+<br>
+<img src=<%=@restaurant.imageurl%> alt=<%=@restaurant.imageurl%> height="100">
+
+<br>
+
+<%= link_to "make a post", new_post_path(@restaurant.id) %>
+
+<%#= link_to "edit", edit_restaurant_path(@restaurant), :class => "postsbtn1" %>
+<%= button_to "edit", edit_restaurant_path(@restaurant), method: :get,:class => "postsbtn1" %>
+</div>

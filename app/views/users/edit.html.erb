@@ -1,0 +1,25 @@
+<h1>Editing User Info<%= @user.name %></h1>
+
+<%= form_for @user  do |f| %>
+  <%= f.label :email %><br>
+  <%= f.email_field :email, required: true %><br><br>
+
+  <%= f.label :first_name %><br>
+  <%= f.text_field :first_name %><br><br>
+  
+  <%= f.label :last_name %><br>
+  <%= f.text_field :last_name %><br><br>
+
+  <%= f.label :password %><br>
+  <%= f.text_field :password %><br><br>
+
+  <%= f.label :imageurl %><br>
+  <%= f.text_field :imageurl %><br><br>
+
+  <%= f.label :is_owner %><br>
+  <%#= f.text_field :is_owner %>
+  <%=f.select :is_owner, ['true', 'false']%><br><br>
+
+
+  <%= f.submit %>
+<% end %>

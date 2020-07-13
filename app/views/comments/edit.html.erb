@@ -1,0 +1,6 @@
+
+<%= form_for @comment, :url=> post_comment_path(@post) do |f|%>
+<%= f.label :NewComment %>
+<%= f.text_area :message %>
+<%= f.submit "Save" %>
+<% end %>
